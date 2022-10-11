@@ -1,0 +1,42 @@
+name: 'Push'
+
+# The workflow should only trigger on push events to the main branch
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '**.yaml'
+
+# Required to get the ID Token that will be used for OIDC
+permissions:
+  id-token: write
+
+jobs:
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE }}
+        aws-region: us-east-1
+
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        rm -rf .git/* .github/* .gitignore README.md 
+        aws s3 sync . ${{ secrets.BUCKET_URI }}
+
+    - name: Invalidate cloudfront cache
+      run : |
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.ROOT_DOMAIN_DISTRIBUTION_ID }} --paths "/*"
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.SUB_DOMAIN_DISTRIBUTION_ID }} --paths "/*"

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Oluwasegun Adedigba</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" onload="get_visitor_count()">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Oluwasegun Adedigba</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education And Courses</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Sahil
+                        <span class="text-primary">Kulkarni</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        Mumbai, India
+                        <a href="mailto:sahilkatwork@gmail.com">sahilkatwork@gmail.com</a>
+                    </div>
+                    <p class="lead mb-5">
+                        Senior Software Engineer with Bachelor’s in Computer Science Engineering. <br>
+                        Expertise in "Cloud Cost Management And Optimization" and developing cloud native applications. <br>
+                        Developed and Architected solutions in AWS and GCP while collaborating with cross-functional teams. <br>
+                        Python is the programming language of choice. <br>
+                        Serverless for everyone!!<br>
+                    </p>
+
+                    <p class="lead mb-5" id="visitor-count-message"></p>
+
+                    <script>
+                        function display_visitor_count(visitor_count) {
+                            let html_to_add = 'Visited by <span class="text-primary"> ' + visitor_count + ' </span> humans around the globe'
+                            console.log(html_to_add)
+                            document.getElementById("visitor-count-message").innerHTML = html_to_add;
+                        }
+                        async function call_api() {
+                            console.log("calling get_visitor_count method")
+                            let response = await fetch('https://4737wt8b07.execute-api.us-east-1.amazonaws.com/Prod');
+                            let myJson = response.json(); //extract JSON from the http response
+                            return myJson
+                        }
+                        function get_visitor_count() {
+                            let api_response_promise = call_api()
+                            console.log("got api data")
+                            api_response_promise.then(
+                                function(value) {display_visitor_count(value);}
+                            )
+                        }
+                    </script>
+
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://linkedin.com/in/sahilkulk/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/kulkarni-sahil/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://twitter.com/mr_lazy_coder" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon" href="https://hackerrank.com/sahilkatwork" target="_blank"><i class="fab fa-hackerrank"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Experience</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Senior Software Engineer</h3>
+                            <div class="subheading mb-3">Capgemini</div>
+                                <ul>
+                                    <li>
+                                        Designed and Developed several microservices in python that identifies wasteful resources in the public cloud which in turn, helped the organization save more than $8 Million using services like Lambda Functions, Boto3, Step Functions, etc.
+                                    </li>
+                                    <li>
+                                        Worked with cloud architect to design and implement a highly scalable solution that is used to find owners for orphan resources in Multi Tenant accounts using technologies like Glue, DynamoDB Streams, AWS CUR report, etc.
+                                    </li>
+                                    <li>
+                                        Designed REST API to expose organizations internal data using services like API Gateway, Step Functions, Lambda Functions, Athena, etc helping build innovative internal products.
+                                    </li>
+                                    <li>
+                                        Designed CI/CD Workflows using GitHub Actions and also cloud native developer tools. Single Handedly built the entire CICD pipeline to deploy applications to GCP Cloud using GitHub actions, Terraform, terragrunt.
+                                    </li>
+                                    <li>
+                                        Created cloud agnostic custom python packages using poetry and deployed it to JFrog Artifactory to be used across all the CSPs, exponentially increasing the development speed. Similarly created package for AWS Team using boto3.
+                                    </li>
+                                    <li>
+                                        Wrote and maintained custom python scripts to increase system efficiency and performance time, these scripts were used to migrate 1000s of resources from on prem to cloud and perform  automation.
+                                    </li>
+                                    <li>
+                                        Collaborated with project managers to prioritize coding milestones, Lead the team by allocation of tasks to team-members.
+                                    </li>
+                                    <li>
+                                        Trained and mentored junior developers and engineers, teaching skills in AWS, Python
+                                    </li>
+                                </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">August 2018 - Present</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Education</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Mumbai University</h3>
+                            <div class="subheading mb-3">Bachelor Of Engineering</div>
+                            <div>Computer Science</div>
+                            <p>GPA: 3.68/4.0 | CGPA: 9.0/10.0</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">August 2014 - May 2018</span></div>
+                    </div>
+                    <h2 class="mb-5">Courses</h2>
+                    <ul>
+                        <li>PluralSight - Supercharing Your Github Workflows</li>
+                        <li>Coursera - Modern Application Development with Python on AWS (Specialization)</li>
+                        <li>Coursera - Cloud Cost Management: Optimization Strategies</li>
+                        <li>Coursera - Introduction to Designing Data Lakes on AWS</li>
+                        <li>Coursera - AWS Fundamentals: Building Serverless Applications</li>
+                    </ul>
+
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Skills</h2>
+                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    <ul class="fa-ul mb-0">
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Python</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>GIT</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>SQL</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Amazon Web Services (AWS)</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Google Cloud Platform (GCP)</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>GitHub Actions</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Lambda Functions</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>IAC - Cloudformation | Terraform</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>REST API</li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Flask</li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Awards-->
+            <section class="resume-section" id="awards">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Awards & Certifications</h2>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            AWS Certified Cloud Practitioner | October 2019
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            AWS Certified Developer - Associate | March 2020
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            AWS Certified Solutions Architect - Associate | December 2020
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            AWS Certified SysOps Administrator - Associate | May 2021
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            Microsoft Certified: Azure Fundamentals | May 2022
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            Google Cloud Certified Digital Leader | June 2022
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            1
+                            <sup>st</sup>
+                            AWS Security GameDay | May 2022
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            Innovator | March 2020
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
